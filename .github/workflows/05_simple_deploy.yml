@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    name: Deploy to Demo 1
+    name: Deploy to Demo 3
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
@@ -13,6 +13,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           port: 22
-          username: demo_1
+          username: demo_3
           key: ${{secrets.PRIVATE_KEY}}
           script: "/usr/local/bin/devops/deploy/deploy.sh"
