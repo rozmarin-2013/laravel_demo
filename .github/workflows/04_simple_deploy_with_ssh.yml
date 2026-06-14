@@ -16,7 +16,7 @@ jobs:
           cat >>~/.ssh/config <<END
             Host demo_1
             HostName ${{ secrets.HOST }}
-            User laravel_demo
+            User ubuntu
             IdentityFile ~/.ssh/demo_1.key
             StrictHostKeyChecking no
           END
