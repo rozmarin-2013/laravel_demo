@@ -14,7 +14,7 @@ jobs:
           echo "$SSH_KEY" > ~/.ssh/demo_1.key
           chmod 600 ~/.ssh/demo_1.key
           cat >>~/.ssh/config <<END
-            Host demo_1
+            Host laravel_demo
             HostName ${{ secrets.HOST }}
             User demo_1
             IdentityFile ~/.ssh/demo_1.key
