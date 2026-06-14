@@ -24,4 +24,4 @@ jobs:
           SSH_KEY: ${{ secrets.PRIVATE_KEY }}
 
       - name: Deploy
-        run: ssh demo_1 '/usr/local/bin/devops/deploy/deploy.sh demo_3'
+        run: ssh demo_3 '/usr/local/bin/devops/deploy/deploy.sh demo_3'
