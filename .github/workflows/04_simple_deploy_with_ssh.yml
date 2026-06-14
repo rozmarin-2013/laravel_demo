@@ -14,9 +14,9 @@ jobs:
           echo "$SSH_KEY" > ~/.ssh/demo_1.key
           chmod 600 ~/.ssh/demo_1.key
           cat >>~/.ssh/config <<END
-            Host demo_1
+            Host demo_3
             HostName ${{ secrets.HOST }}
-            User ubuntu
+            User demo_3
             IdentityFile ~/.ssh/demo_1.key
             StrictHostKeyChecking no
           END
