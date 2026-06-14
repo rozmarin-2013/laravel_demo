@@ -28,5 +28,8 @@ jobs:
       - name: Deploy
         run: ssh demo_3 '/usr/local/bin/devops/deploy/deploy.sh'
 
+      - name: Install Composer dependencies
+        run: ssh demo_3 'cd ~/deployments/current && composer install --no-dev --optimize-autoloader --no-interaction'
+
       - name: Sign The Code
         run: ssh demo_3 'cd ~/deployments/current && php artisan app:sign-code'
