@@ -6,27 +6,27 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Demo 1
+    name: Deploy to Demo 3
     runs-on: ubuntu-latest
     # if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/demo_1.key
-          chmod 600 ~/.ssh/demo_1.key
+          echo "$SSH_KEY" > ~/.ssh/demo_3.key
+          chmod 600 ~/.ssh/demo_3.key
           cat >>~/.ssh/config <<END
-            Host demo_1
+            Host demo_3
             HostName ${{ secrets.HOST }}
-            User demo_1
-            IdentityFile ~/.ssh/demo_1.key
+            User demo_3
+            IdentityFile ~/.ssh/demo_3.key
             StrictHostKeyChecking no
           END
         env:
           SSH_KEY: ${{ secrets.PRIVATE_KEY }}
 
       - name: Deploy
-        run: ssh demo_1 '/usr/local/bin/devops/deploy/deploy.sh'
+        run: ssh demo_3 '/usr/local/bin/devops/deploy/deploy.sh'
 
       - name: Sign The Code
-        run: ssh demo_1 'cd ~/deployments/current && php artisan app:sign-code'
+        run: ssh demo_3 'cd ~/deployments/current && php artisan app:sign-code'
