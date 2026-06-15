@@ -25,8 +25,7 @@ jobs:
       - name: Download and unzip the build artifact
         run: |
           echo "${{ github.event.inputs.zip_artifact_id }}"
-          echo "https://github.com/rozmarin-2013/laravel_demo/actions/${{ github.event.inputs.zip_artifact_id }}/zip"
-          curl -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -L -o archive.zip "https://github.com/rozmarin-2013/laravel_demo/actions/${{ github.event.inputs.zip_artifact_id }}/zip"
+          curl -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -L -o archive.zip "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${{ github.event.inputs.zip_artifact_id }}/zip"
           ls -la
           unzip archive.zip
           ls -la
