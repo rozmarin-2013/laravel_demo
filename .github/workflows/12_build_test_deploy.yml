@@ -163,18 +163,18 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
-          username: demo_1
+          username: demo_3
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           source: "build*.zip"
-          target: /home/demo_1/deployments
+          target: /home/demo_3/deployments
 
       - name: Deploy the archive
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           port: 22
-          username: demo_1
+          username: demo_3
           key: ${{ secrets.PRIVATE_KEY }}
           script: "/usr/local/bin/devops/deploy/deploy.sh"
 
