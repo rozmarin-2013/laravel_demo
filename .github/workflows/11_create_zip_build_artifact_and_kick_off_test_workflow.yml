@@ -61,4 +61,4 @@ jobs:
           gh workflow run 10_php_artisan_test_from_zip_archive.yml -f zip_artifact_id=${{ steps.upload_artifact.outputs.artifact-id }}
         env:
           # Need to have a personal token with read/write on actions for the repo
-          GH_TOKEN: ${{ github.token }}
+          ${{ secrets.API_TOKEN }}
