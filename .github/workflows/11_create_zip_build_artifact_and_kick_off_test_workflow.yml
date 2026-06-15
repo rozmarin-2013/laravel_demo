@@ -2,6 +2,10 @@ name: 11_create_zip_build_artifact_and_kick_off_test_workflow
 on:
   workflow_dispatch:
 
+permissions:
+  actions: write
+  contents: read
+
 jobs:
   test_and_create_zip:
     runs-on: ubuntu-latest
@@ -56,9 +60,12 @@ jobs:
           path: |
             dist
 
-      - name: Kick Off Testing Workflow
+      - name: Check if API_TOKEN was created
         run: |
           echo "Token set: ${{ secrets.API_TOKEN != '' }}"
+
+      - name: Kick Off Testing Workflow
+        run: |
           gh workflow run 10_php_artisan_test_from_zip_archive.yml -f zip_artifact_id=${{ steps.upload_artifact.outputs.artifact-id }}
         env:
           # Need to have a personal token with read/write on actions for the repo
